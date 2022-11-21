@@ -3,6 +3,9 @@ package com.mycompany.ejemplosfechas;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.MonthDay;
+import java.time.YearMonth;
+import java.time.temporal.ChronoUnit;
 
 
 public class EjemplosFechas {
@@ -48,5 +51,52 @@ public class EjemplosFechas {
             
             System.out.println("La fecha es posterior a fecha2");
         }
+        
+        
+        //Clase para guardar mes y dia (NO EL AÑO)
+        
+        MonthDay nocheVieja = MonthDay.of(12, 31);
+        
+        //Clase para guardar año y mes (NO EL DIA)
+        
+        YearMonth añoMes = YearMonth.of(2023, 2);
+        
+        //Operaciones con fechas
+        
+        //Sumar dias al actual
+        System.out.println("hoy" + fechaHoy);
+        System.out.println("Despues de 100 dias " + fechaHoy.plusDays(100));
+        System.out.println("hoy " + fechaHoy);
+        
+        //Para sumar meses
+        
+        LocalDate sumarMeses = fechaHoy.plusMonths(13);
+        
+        System.out.println("Despues de 13 meses " + sumarMeses);
+        
+        //SUMAR SIGLOS
+        
+        LocalDate dosSigloDespues = sumarMeses.plus(2, ChronoUnit.CENTURIES);
+        System.out.println("2 SIGLOS DESPUES " + dosSigloDespues);
+        
+        
+        //La diferencia de dias que hay entre 2 fechas
+        //Te coge el dia de antes en la fecha2 es decir si la fecha es dia 31 te coge el 30
+        
+        long diferenciaDias = ChronoUnit.DAYS.between(fecha, fecha2);
+        
+        System.out.println(diferenciaDias);
+        
+        long years = ChronoUnit.YEARS.between(fecha, fecha2);
+        
+        System.out.println(years);
+        
+        
+        //Devuelve true o false si la fecha es bisiesta o no
+        
+        boolean esBisiesto = fechaHoy.isLeapYear();
+        
+        
+        System.out.println("Dias del mes actual " + fechaHoy.lengthOfMonth());
     }
 }
