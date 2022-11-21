@@ -5,7 +5,10 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.MonthDay;
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.time.temporal.ChronoUnit;
+import java.util.Locale;
 
 
 public class EjemplosFechas {
@@ -98,5 +101,35 @@ public class EjemplosFechas {
         
         
         System.out.println("Dias del mes actual " + fechaHoy.lengthOfMonth());
+        
+        
+        //Dia de hoy
+        Locale configLocal = Locale.getDefault();
+        System.out.println("Fecha hoy dia " +
+                fechaHoy.getDayOfWeek().getDisplayName(TextStyle.FULL, configLocal));
+        
+        //Version acortada
+         Locale configLocal2 = Locale.getDefault();
+        System.out.println("Fecha hoy dia " +
+                fechaHoy.getDayOfWeek().getDisplayName(TextStyle.SHORT, configLocal));
+        
+        
+        //Primera letra del dia
+         Locale configLocal3 = Locale.getDefault();
+        System.out.println("Fecha hoy dia " +
+                fechaHoy.getDayOfWeek().getDisplayName(TextStyle.NARROW, configLocal));
+        
+        //A chino
+         Locale configLocal4 = Locale.getDefault();
+        System.out.println("Fecha hoy mes " +
+                mesActual.getDisplayName(TextStyle.FULL, Locale.CHINA));
+        
+        
+        DateTimeFormatter formatoFechas = DateTimeFormatter.ofPattern("dd/MM/yyy");
+        
+        String fechaFormateada = fechaHoy.format(formatoFechas);
+        
+        System.out.println(fechaFormateada);
+        
     }
 }
